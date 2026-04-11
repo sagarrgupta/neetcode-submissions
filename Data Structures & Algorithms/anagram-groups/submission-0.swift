@@ -1,0 +1,20 @@
+class Solution {
+    func groupAnagrams(_ strs: [String]) -> [[String]] {
+        var dict: [String: [String]] = [:]
+        for str in strs {
+            let sorted = "\(str.sorted())"
+            if let value = dict[sorted] {
+                dict[sorted, default: []].append(str)
+            } else {
+                dict[sorted] = [str]
+            }
+        }
+        
+        var results = [[String]]()
+        for values in dict {
+            results.append(values.value)
+        }
+        
+        return results
+    }
+}
